@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+        "target": "https://ne1itctwas29.odccloud.intranet/api/Account",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

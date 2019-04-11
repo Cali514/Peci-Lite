@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/my-theme.scss",
               "src/styles.css"
             ],
             "scripts": [],
@@ -85,7 +86,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/logo.png"
             ]
           }
         },

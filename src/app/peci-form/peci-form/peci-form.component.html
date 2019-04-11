@@ -1,0 +1,413 @@
+<div class="example-container">
+    <div >
+      <h1>PECI-Lite</h1>
+    </div>
+    <form [formGroup] ="peciForm" (ngSubmit)="onSubmit()">
+  <div fxLayout="row" fxLayoutAlign="space-around">
+
+    <div>
+      <mat-card>
+      <div>
+      <span>Reservation Number:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Res number" name= "Res_No" formControlName="Res_No">
+      </mat-form-field>
+    </div>
+
+    <div>
+        <span>Level of Service:</span>
+        <mat-form-field appearance="outline">
+            <select matNativeControl required formControlName="Level_Serv">
+                <option value="Standard Event">Standard Event</option>
+                <option value="Event express">Event Express</option>
+                <option value="Automated Event">Automated</option>                
+           </select>
+        </mat-form-field>
+    </div>
+    </mat-card>
+  </div>
+
+
+
+
+  <div>
+    <mat-card>
+    <div fxLayoutAlign="center center">
+     <span>Location:</span>
+     <mat-form-field appearance="outline">
+      <select matNativeControl required formControlName="Location">
+          <option value="Montreal">Montreal</option>
+          <option value="Denver">Denver</option>
+          <option value="Other">Other</option>
+      </select>
+     </mat-form-field>
+
+    </div>
+
+    <div>
+      <span>Other Location:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Other" formControlName="Custom_Selection">
+      </mat-form-field>
+    </div>
+  </mat-card>
+  </div>
+
+  </div>
+
+<hr>
+
+  <div fxLayout="row" fxLayoutAlign="space-around">
+    <div>
+     <span>Bridge:</span>
+     <mat-form-field appearance="outline">
+      <select matNativeControl required formControlName="Bridge">
+          <option value="CHIP1">CHIP</option>
+          <option value="DENP1">DENP</option>
+      </select>
+     </mat-form-field>
+    </div>
+
+    <div>
+    <div>
+      <span>Primary:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Primary" formControlName="Primary">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <span>Secondary:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Secondary" formControlName="Secondary">
+      </mat-form-field>
+    </div>
+    </div>
+    <div>
+        <span>Changes to Required Fields:</span><br>
+        <mat-form-field appearance="outline">
+          <textarea matInput formControlName="Req_Field"></textarea>
+        </mat-form-field>
+    </div>
+
+
+  </div>
+  <hr>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+
+      <div>
+         <div>
+          <span>Actual Start Time of call (military format) in Customer's Time Zone:</span>
+          <mat-form-field appearance="outline">
+          <input matInput placeholder="12:00" formControlName="Start">
+          </mat-form-field>
+        </div>
+
+        <div>
+        <span>Actual End Time of call (military format) in Customer's Time Zone:</span>
+         <mat-form-field appearance="outline">
+        <input matInput placeholder="13:00" formControlName="End_Time">
+         </mat-form-field>
+        </div>
+    </div>
+
+  <div>
+    <div>
+      <span>Language:</span>
+      <mat-form-field appearance="outline">
+          <select matNativeControl required formControlName="Language">
+              <option value="North American English">English</option>
+              <option value="Canadian French">French</option>
+              <option value="Spanish">Spanish</option>
+              <option value="Italian">Italian</option>
+              <option value="Portuguese">Portuguese</option>
+         </select>
+      </mat-form-field>
+    </div>
+
+    </div>
+
+  </div>
+<br>
+<hr>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+    <div>
+    <div>
+      <mat-checkbox formControlName="Clearance">Clearance</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Comm">Communication Line</mat-checkbox><br>
+    </div>
+    </div>
+
+    <div>
+    <div>
+      <span>With Whom:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="With">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <span>Purpose:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="" formControlName="Purpose">
+      </mat-form-field>
+    </div>
+    </div>
+
+    <div>
+    <span>ECD Managed by</span>
+    <br>
+
+    <mat-radio-group formControlName="ECD">
+      <mat-radio-button value="1">Operations</mat-radio-button>
+      <br>
+
+      <mat-radio-button value="2">Customer</mat-radio-button>
+    </mat-radio-group>
+    </div>
+  </div>
+
+  <hr>
+
+
+      <div fxLayout="row" fxLayoutAlign="space-around">
+
+    <div>
+    <div>
+      <span>Unused Lines:</span>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="0" formControlName="Unused">
+      </mat-form-field>
+    </div>
+
+    <div>
+        <span>Participant Notification:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Notif">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <span>Fax (Email):</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Fax_Email">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <span>Audio/CD number of copies:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="CD">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <span>Tape Copies:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Tape">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <span>Mail Type:</span>
+        <mat-form-field appearance="outline">
+            <select matNativeControl  formControlName="Mail_Type">
+                <option value="None">Standard Event</option>
+                <option value="Regular Mail">Event Express</option>
+                <option value="Courrier">Automated</option>
+           </select>
+        </mat-form-field>
+    </div>
+    </div>
+
+    <div>
+    <br>
+    <div>
+        <mat-checkbox formControlName="Monitor">Monitor</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Q_A">Q&A</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="No_Show">No Show</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="PostV">PostView</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="WAV_MP3">WAV/MP3</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Transc">Transcription</mat-checkbox><br>
+    </div>
+  </div>
+
+  <div>
+     <br>
+    <div>
+      <mat-checkbox formControlName="Other_Media">Other Media Request</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Roll_Call">Roll Call</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Announce">Announce on Entry</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Event_Call_D">Event call Directory</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="Pin_Entry">Pin Entry</mat-checkbox><br>
+    </div>
+    <br>
+    <div>
+      <mat-checkbox formControlName="C_Line">Communication Lines US</mat-checkbox><br>
+    </div>
+    </div>
+  </div>
+
+  <hr>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+      <div>
+        <div>
+        <span>Actual Number of Lines:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Number of Lines" formControlName="Number_of_Lines">
+        </mat-form-field>
+        </div>
+
+        <div>
+        <span>Number of Bells at Start:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Bells_Start">
+        </mat-form-field>
+        </div>
+
+        <div>
+        <span>Number in Clearance:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Number_Clearance">
+        </mat-form-field>
+        </div>
+
+        <div>
+        <span>Number Turned Away:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Turned_Away">
+        </mat-form-field>
+        </div>
+
+        <div>
+        <span>Number of Questions:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Questions">
+        </mat-form-field>
+        </div>
+
+        <div>
+        <span>Number left in Queue:</span>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="0" formControlName="Left_Queue">
+        </mat-form-field>
+        </div>
+      </div>
+
+
+
+       <div>
+          <div>
+            <span>Number of 800 Dial-out lines (US):</span>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="0" formControlName="US_800_Dialout">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <span>Number of Local Dial-out lines (CDN):</span>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="0" formControlName="CDN_Dialout">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <span>Number of North American Dial-out lines:</span>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="0" formControlName="NA_Dialout">
+            </mat-form-field>
+          </div>
+
+          <div>
+              <button type="button" mat-raised-button color="accent" (click)="addInternationalButtonClick()">Add International Number</button><br>
+              <span>International:</span>
+            <div formArrayName="International_1" *ngFor= "let number of peciForm.get('International_1').controls let i= index"> 
+              <div [formGroupName]="i">             
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="0" >
+              </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+       </div>
+      </div>
+    <hr>
+  <div fxLayout="row" fxLayoutAlign="space-around">
+    <div>
+    <div>
+        <span>Comment:</span>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Comment"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+        <span>Operator's Comments:</span>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Op_Comments"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+        <span>Changes Chair made:</span>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Chair_Changes"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    <div>
+        <span>Incidents:</span>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Incidents"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+        <span>Ways to improve future calls:</span>
+      <mat-form-field appearance="outline">
+        <textarea matInput formControlName="Improve"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+  <button type="submit" mat-raised-button color="primary">submit</button>
+  </div>
+  <hr>
+
+
+</form>
+ </div>
