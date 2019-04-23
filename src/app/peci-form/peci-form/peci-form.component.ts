@@ -51,7 +51,7 @@ export class PeciFormComponent implements OnInit {
       US_800_Dialout: [''],
       CDN_Dialout: [''],
       NA_Dialout: [''],
-      International_1: [''],
+      International_1: this.fb.array([ this.fb.control('') ]),      
       Level_Serv: [''],
       Monitor: [''],
       Unused: [''],
@@ -104,11 +104,10 @@ export class PeciFormComponent implements OnInit {
    
   }
 
-  /*addInternationalButtonClick(): void {
+  addInternationalButtonClick(): void {
     <FormArray> this.peciForm.get('International_1').push(this.addInternational())
   }
-
-  addInternational(): FormGroup{
-    return this.fb.group({International_1: [''] })
-  }*/
+  addInternational() {
+    return this.fb.control('')
+  }
 }
