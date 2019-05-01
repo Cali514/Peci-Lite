@@ -4,14 +4,16 @@ var Service = require('node-windows').Service;
 var svc = new Service({
   name:'Peci',
   description: 'Peci app as a sevice',
-  script: 'C:\\Users\\callender.wayne\\Desktop\\peciv4\\peci>'
+  script: 'C:\\Users\\callender.wayne\\Desktop\\peciv4\\peci\server.js>'
   
 });
 
 // Listen for the "install" event, which indicates the
 // process is available as a service.
-svc.on('install',function(){
-  svc.start();
+svc.on('uninstall',function(){
+  console.log('Uninstall complete.');
+  console.log('The service exists: ',svc.exists);
 });
 
-svc.install();
+// Uninstall the service.
+svc.uninstall();
