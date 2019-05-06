@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {Peci} from '../../models/peci';
-import {PeciService} from './peci.service'
-import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {PeciService} from './peci.service';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+
+import { map } from 'rxjs/operators';
 
 
 
@@ -25,11 +27,11 @@ export class PeciFormComponent implements OnInit {
 
   ngOnInit() {
     this.peciForm = this.fb.group({
-      Res_No: [''],
-      Location: [''],
-      Bridge: [''],
+      Res_No: ['', Validators.required],
+      Location: ['', Validators.required],
+      Bridge: ['', Validators.required],
       Custom_Selection: [''],
-      Primary: [''],
+      Primary: ['', Validators.required],
       Secondary: [''],
       Language: [''],
       Bridge2: [''],
@@ -51,7 +53,8 @@ export class PeciFormComponent implements OnInit {
       US_800_Dialout: [''],
       CDN_Dialout: [''],
       NA_Dialout: [''],
-      International_1: this.fb.array([ this.fb.control('') ]),      
+      International_1: this.fb.array([ this.fb.control('') ]), 
+      International_10: [''],     
       Level_Serv: [''],
       Monitor: [''],
       Unused: [''],
@@ -91,10 +94,16 @@ export class PeciFormComponent implements OnInit {
 
   async onSubmit(){
     this.loading = true;
-    const formValue = this.peciForm.value;
+    let formValue = this.peciForm.value;
   //  console.warn(formValue);
-
-    try{
+   /* formValue = map(formValue =>(International_1 =>{
+      if (International_1.length >1) {
+        for (let i = 0; i< International_1.length; i++ ){
+          International_1[i] =`International${i+1}`
+        }
+      }
+    })) */
+    try {
       await this.ps.createPeci(formValue)
       .subscribe(data => console.log('ok'));
       this.success = true
@@ -107,7 +116,10 @@ export class PeciFormComponent implements OnInit {
   addInternationalButtonClick(): void {
     <FormArray> this.peciForm.get('International_1').push(this.addInternational())
   }
+
   addInternational() {
     return this.fb.control('')
   }
+
+ 
 }

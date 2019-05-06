@@ -31,7 +31,7 @@ export class PeciService {
 
 
 
-  private url: any = 'http://4.72.36.16:3000/api/peci' ;
+  private url: any = 'http://4.72.36.16:3001/api/peci' ;
 
 
 

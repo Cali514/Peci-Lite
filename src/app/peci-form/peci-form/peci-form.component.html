@@ -2,7 +2,7 @@
     <div >
       <h1>PECI-Lite</h1>
     </div>
-    <form [formGroup] ="peciForm" (ngSubmit)="onSubmit()">
+    <form [formGroup] ="peciForm" [hidden]="success" (ngSubmit)="onSubmit()">
   <div fxLayout="row" fxLayoutAlign="space-around">
 
     <div>
@@ -434,10 +434,12 @@
   </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-  <button type="submit" mat-raised-button color="primary">submit</button>
+  <button type="submit" [disabled]="peciForm.invalid" mat-raised-button color="primary">submit</button>
   </div>
   <hr>
-
-
 </form>
+<div *ngIf="success" class="notification is-success">
+  Yay! We received your submission
+  <a routerLink="/peci"><button mat-raised-button color="primary"  > Back to Peci</button></a>
+</div>
  </div>
