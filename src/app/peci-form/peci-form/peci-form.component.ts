@@ -121,5 +121,7 @@ export class PeciFormComponent implements OnInit {
     return this.fb.control('')
   }
 
- 
+  isSuccess() {
+    this.success = false
+  }
 }

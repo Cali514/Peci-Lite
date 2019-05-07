@@ -40,6 +40,7 @@ export class PeciService {
   
 
   public createPeci(formValue: Peci): Observable<Peci>{
+    
    var data = JSON.stringify(formValue);
    console.log(data);
    

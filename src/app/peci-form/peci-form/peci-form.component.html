@@ -440,6 +440,6 @@
 </form>
 <div *ngIf="success" class="notification is-success">
   Yay! We received your submission
-  <a routerLink="/peci"><button mat-raised-button color="primary"  > Back to Peci</button></a>
+  <a routerLink="/peci"><button mat-raised-button color="primary" (click) = isSuccess() > Back to Peci</button></a>
 </div>
  </div>
