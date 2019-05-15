@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ErrorComponent } from './error/error.component';
     LoginComponent,
     HomeComponent,
     ErrorComponent,
+    ScheduleComponent,
 
 
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
 import {Peci} from '../../models/peci';
 import {Observable} from 'rxjs/';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, map, tap, pluck} from 'rxjs/operators';
 
 
 
@@ -40,11 +40,20 @@ export class PeciService {
   
 
   public createPeci(formValue: Peci): Observable<Peci>{
-    
-   var data = JSON.stringify(formValue);
+    var nums =formValue.International_1
+   //var data = object.assign(formValue, iterNum(nums))
+  var data = JSON.stringify(formValue);
    console.log(data);
    
     return this.http.post<Peci>(`${this.url}`, data, httpOptions )
       .pipe()
      }
+
+    /* iterNum(n, formValue) {
+       for(let i=0; i<n.length; i++){
+
+        var result =Object.assign({}, formValue, formValue.International_ + n+1:n.value  )
+         
+       }
+     }*/
 }

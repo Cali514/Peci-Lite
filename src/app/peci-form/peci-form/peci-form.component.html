@@ -377,7 +377,7 @@
           <div formArrayName = 'International_1' >
               <button type="button" mat-raised-button color="accent" (click)="addInternationalButtonClick()">Add International Number</button><br>
               <span>International:</span>
-            <div *ngFor= "let number of peciForm.get('International_1').controls; let i= index"> 
+            <div *ngFor= "let number of peciForm.get('International_1').value; let i= index" #International_1> 
               <div [formControlName] = 'i'>             
               <mat-form-field appearance="outline">
                 <input matInput placeholder="0" >

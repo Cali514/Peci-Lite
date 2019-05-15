@@ -8,6 +8,8 @@ const router = express.Router();
 router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+const schedule = require('./schedule');
+
 var queueData = {"itemData": {
   "Priority": "Normal",
   "Name": "371-Peci_Efficiency_Automation",
@@ -55,7 +57,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/peci', (req, res) => {
-  var out= req.body;  
+  var out= req.clone(req.body);  
+  
   out = JSON.stringify(out);
   //out = out.replace(/"/g, '\\\"');
   console.log(out);
@@ -87,6 +90,7 @@ router.post('/peci', (req, res) => {
   res.send({hi:"ok"});
 });
 
+router.use('/schedule', schedule);
   
 
 

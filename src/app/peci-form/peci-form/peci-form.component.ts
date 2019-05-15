@@ -54,7 +54,6 @@ export class PeciFormComponent implements OnInit {
       CDN_Dialout: [''],
       NA_Dialout: [''],
       International_1: this.fb.array([ this.fb.control('') ]), 
-      International_10: [''],     
       Level_Serv: [''],
       Monitor: [''],
       Unused: [''],
@@ -95,6 +94,13 @@ export class PeciFormComponent implements OnInit {
   async onSubmit(){
     this.loading = true;
     let formValue = this.peciForm.value;
+    let intNums = formValue.International_1
+    if(intNums.length>0){
+      for (let i = 1; i< intNums.length; i++ ){
+        formValue.International_[i] = intNums[i]
+      }
+      formValue.International_1 = ""
+    }
   //  console.warn(formValue);
    /* formValue = map(formValue =>(International_1 =>{
       if (International_1.length >1) {

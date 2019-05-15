@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {PeciFormComponent} from './peci-form/peci-form/peci-form.component';
 import { ErrorComponent } from './error/error.component';
+import { ScheduleComponent } from './schedule/schedule.component'; ;
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'peci', component: PeciFormComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'schedule', component: ScheduleComponent },
   { path: '',
       redirectTo: '/home',
      pathMatch: 'full'
