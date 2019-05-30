@@ -15,7 +15,7 @@ router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
-//mongoose.connect('mongodb://localhost:27017/peci', {useNewUrlParser: true});
+
 
 //const schedule = require('./schedule');
 
