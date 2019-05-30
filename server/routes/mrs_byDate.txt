@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:even="http://EventConfQuery.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <even:getEventConferencesForDate xmlns="http://EventConfQuery.com/">
+         <!--Optional:-->
+         <even:callCenter>ALL</even:callCenter>
+         <!--Optional:-->
+         <even:dtStartDateString_yymmdd>190523</even:dtStartDateString_yymmdd>
+      </even:getEventConferencesForDate>
+   </soapenv:Body>
+</soapenv:Envelope>

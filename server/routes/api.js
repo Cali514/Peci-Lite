@@ -1,14 +1,24 @@
 const express = require('express');
-var request = require('request');
+const fs = require('fs');
+//const mongoose = require('mongoose');
+const User = require ('../models/user');
+const Peci = require ('../models/peci');
+
+
 var bodyParser = require('body-parser');
 var rp = require('request-promise');
+
 
 const router = express.Router();
 
 router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-const schedule = require('./schedule');
+
+//mongoose.connect('mongodb://localhost:27017/peci', {useNewUrlParser: true});
+
+//const schedule = require('./schedule');
+
 
 var queueData = {"itemData": {
   "Priority": "Normal",
@@ -22,7 +32,7 @@ var queueData = {"itemData": {
   }
   }};
 
-var dataString = '{ "tenancyName":"Federated-Freeman", "usernameOrEMailAddress":"wcallender", "password":"Stanley24"}';
+var dataString = '{"tenancyName":"Federated-Freeman", "usernameOrEMailAddress":"wcallender", "password":"Stanley24"}';
 
 var options = {
   url: 'https://ne1itctwas29.odccloud.intranet/api/Account',
@@ -56,11 +66,15 @@ router.get('/', (req, res) => {
   res.send("api works");
 });
 
+
+
+
+
 router.post('/peci', (req, res) => {
-  var out= req.clone(req.body);  
+  var out= req.body;  
   
   out = JSON.stringify(out);
-  //out = out.replace(/"/g, '\\\"');
+  
   console.log(out);
   rp(options)
     .then(function(body){
@@ -70,12 +84,27 @@ router.post('/peci', (req, res) => {
     peciOptions.headers.Authorization = `Bearer ${key}`;
     queueData.itemData.SpecificContent.payload = out
     peciOptions.body = queueData;
-    //console.log(peciOptions);
+    
     })
     .then(function(){      
       rp(peciOptions)
       .then(function(data){
-        console.log("success: Created at " + data.CreationTime +" Transaction #: " +data.Key);    
+      // console.log(data.SpecificContent.payload); 
+      console.log("success: Created at " + data.CreationTime +" Transaction #: " +data.Key)
+     
+     /* let creation = {creation: data.CreationTime };
+      let trans = {Transcation_number : data.Key } ;
+
+      let newPeci = Object.assign(data.SpecificContent.payload, creation, trans);
+      newPeci = new Peci;
+      newPeci.save(function (err) {
+        if (err) {
+        //return handleError(err);
+        console.log(err);
+        res.send({error: err})
+      }
+      // saved!
+      });*/ 
       })
       .catch(function(err){
         console.log(err);
@@ -90,7 +119,7 @@ router.post('/peci', (req, res) => {
   res.send({hi:"ok"});
 });
 
-router.use('/schedule', schedule);
+//router.use('/schedule', schedule);
   
 
 

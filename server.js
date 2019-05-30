@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 // Get our API routes
 const api = require('./server/routes/api');
-//const schedule = require('./server/routes/schedule');
+//const login = require('./server/routes/login');
 
 
 app.use(cors());
@@ -26,8 +26,8 @@ app.use(express.static(path.join(__dirname, 'dist/peci')));
 // Set our api routes
 app.use('/api', api);
 
-// Set our schedule routes
-//app.use('/schedule', schedule);
+// Set our logi routes
+//app.use('/login', login);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

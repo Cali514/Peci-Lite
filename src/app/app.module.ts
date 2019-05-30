@@ -18,6 +18,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import {AuthService} from './auth.service';
+import {AuthGuard} from './auth.guard'
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
     MatInputModule, MatButtonModule, MatRadioModule, MatCardModule, MatFormFieldModule, MatCheckboxModule,
     MatSidenavModule, MatIconModule, MatToolbarModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

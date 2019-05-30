@@ -10,10 +10,10 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-peci-form',
-  templateUrl: './peci-form.component.html',
+  templateUrl: './peciView.html',
   styleUrls: ['./peci-form.component.css']
 })
-export class PeciFormComponent implements OnInit {
+export class PeciViewComponent implements OnInit {
 
   peciForm: FormGroup;
   peci: Peci;
