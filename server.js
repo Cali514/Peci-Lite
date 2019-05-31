@@ -20,7 +20,8 @@ const api = require('./server/routes/api');
 
 
 mongoose.connect('mongodb://localhost:27017/confCollab', {
-  useNewUrlParser: true,
+  useNewUrlParser: true
+  
 });
 
 mongoose.set('useCreateIndex', true);
